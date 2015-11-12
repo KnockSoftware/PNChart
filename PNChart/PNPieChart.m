@@ -140,17 +140,21 @@
     NSString *titleText = currentDataItem.textDescription;
     NSString *titleValue;
     
-    if (self.showAbsoluteValues) {
-        titleValue = [NSString stringWithFormat:@"%.0f",currentDataItem.value];
-    }else{
-        titleValue = [NSString stringWithFormat:@"%.0f%%",[self ratioForItemAtIndex:index] * 100];
-    }
-    if(!titleText || self.showOnlyValues){
-        descriptionLabel.text = titleValue;
-    }
-    else {
-        NSString* str = [titleValue stringByAppendingString:[NSString stringWithFormat:@"\n%@",titleText]];
-        descriptionLabel.text = str ;
+    if (self.showOnlyDescriptions) {
+        descriptionLabel.text = titleText;
+    } else {
+        if (self.showAbsoluteValues) {
+            titleValue = [NSString stringWithFormat:@"%.0f",currentDataItem.value];
+        }else{
+            titleValue = [NSString stringWithFormat:@"%.0f%%",[self ratioForItemAtIndex:index] * 100];
+        }
+        if(!titleText || self.showOnlyValues){
+            descriptionLabel.text = titleValue;
+        }
+        else {
+            NSString* str = [titleValue stringByAppendingString:[NSString stringWithFormat:@"\n%@",titleText]];
+            descriptionLabel.text = str ;
+        }
     }
     
     //If value is less than cutoff, show no label

@@ -32,6 +32,9 @@
 /** Default is 1.0. */
 @property (nonatomic) NSTimeInterval duration;
 
+/** Show only descriptions, this is useful if precise values are not important*/
+@property (nonatomic) BOOL showOnlyDescriptions;
+
 /** Show only values, this is useful when legend is present */
 @property (nonatomic) BOOL showOnlyValues;
 
